@@ -1,0 +1,88 @@
+{
+  "dataSet": [
+    {
+      "testCase": "Verify Success Valid Input",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "Foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "successSaveOwnerBlockMessage",
+      "message": "Данные сохранены"
+    },
+    {
+      "testCase": "Verify error empty nameObject",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "",
+      "objectAddress": "Foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "errorNameObjectInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify error empty address",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "errorAddressObjectInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify error empty login",
+      "username": "",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "errorLoginInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify error empty password",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "errorLoginInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify valid save without personal names",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "",
+      "engineerName": "",
+      "managerName": "",
+      "objectName": "Foo",
+      "objectAddress": "foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "successSaveOwnerBlockMessage",
+      "message": "Данные сохранены"
+    }
+  ]
+}

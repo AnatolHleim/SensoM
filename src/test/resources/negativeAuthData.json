@@ -1,0 +1,22 @@
+{
+  "dataSet": [
+    {
+      "testCase": "Verify invalid auth email",
+      "username": "dsfds@notEmail.rt",
+      "password": "Sanchez",
+      "message": "//p[@class='p error']"
+    },
+    {
+      "testCase": "Verify invalid auth password",
+      "username": "dsfds@notEmail.rt",
+      "password": "Sanchez",
+      "message": "//p[@class='p error']"
+    },
+    {
+      "testCase": "Verify upper case auth password",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "SANCHEZ",
+      "message": "//p[@class='p error']"
+    }
+  ]
+}

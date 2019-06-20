@@ -30,9 +30,9 @@ public class NewObjectPage extends BasePageObject {
         return messageMap.get(nameMessage);
     }
 
-    public By ownerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Владелец процесса']]");
-    public By firstEngeneerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Инженер 1']]");
-    public By managerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Менеджер 1']]");
+    public By ownerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Владелец процесса']]/input");
+    public By firstEngeneerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Инженер 1']]/input");
+    public By managerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Менеджер 1']]/input");
     public By nameObjectInput = By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Название')]]//div/input");
     public By addressObjectInput = By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Адрес')]]//div/input");
     public By urlObjectInput = By.xpath("//div[div[@class='input-title']/h2[contains(text(),'URL')]]//div/input");

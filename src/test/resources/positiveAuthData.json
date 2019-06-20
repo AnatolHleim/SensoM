@@ -1,0 +1,17 @@
+{
+  "dataSet": [
+    {
+      "testCase": "Verify Admin Role",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "message": "Такой страницы нет. Возможно, адрес устарел или содержит опечатку. Чтобы продолжить, перейдите по ссылке"
+    },
+    {
+      "testCase": "Verify Admin Role Upper Case Email",
+      "username": "YA.RAFON-92@YA.RU",
+      "password": "Sanchez",
+      "message": "Такой страницы нет. Возможно, адрес устарел или содержит опечатку. Чтобы продолжить, перейдите по ссылке"
+
+    }
+  ]
+}

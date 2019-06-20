@@ -28,11 +28,13 @@ public class BasePageObject {
 
 	/** Find element using given locator */
 	public WebElement find(By locator) {
+		waitForVisibilityOf(locator,5);
 		return driver.findElement(locator);
 	}
 
 	/** Find all elements using given locator */
-	protected List<WebElement> findAll(By locator) {
+	public List<WebElement> findAll(By locator) {
+		waitForVisibilityOf(locator,5);
 		return driver.findElements(locator);
 	}
 
@@ -45,9 +47,12 @@ public class BasePageObject {
 	/** Type given text into element with given locator */
     public void type(String text, By locator) {
 		waitForVisibilityOf(locator, 5);
+		find(locator).clear();
 		find(locator).sendKeys(text);
 	}
-
+	public boolean elementHasAttribute(By element, String attribute, String active) {
+		return this.find(element).getAttribute(attribute).contains(active);
+	}
 	/** Get URL of current page from browser */
 	public String getCurrentUrl() {
 		return driver.getCurrentUrl();

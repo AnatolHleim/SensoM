@@ -11,6 +11,23 @@ public class TestData extends BaseTest {
     private String objectAddress;
     private String objectURL;
     private String snowCover;
+    private String attribute;
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    private String active;
+
+    public String getCondition() {
+        return condition;
+    }
+
+    private String condition;
 
     public String getLocator() {
         return locator;
