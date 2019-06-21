@@ -22,7 +22,7 @@ public class BaseTest {
 	@BeforeMethod(alwaysRun = true)
 	public void setUp(Method method, @Optional("chrome") String browser, @Optional String profile,
 			@Optional String deviceName, ITestContext ctx) {
-		String testName = ctx.getCurrentXmlTest().getName();
+		 testName = ctx.getCurrentXmlTest().getName();
 		log = LogManager.getLogger(testName);
 
 		BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
@@ -38,13 +38,13 @@ public class BaseTest {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			log.info(e);
+			Thread.currentThread().interrupt();
 		}
 
 		driver.manage().window().maximize();
 
 		this.testSuiteName = ctx.getSuite().getName();
-		this.testName = testName;
 		this.testMethodName = method.getName();
 	}
 

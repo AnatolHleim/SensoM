@@ -24,8 +24,8 @@ public class NewObjectPage extends BasePageObject {
         Map<String, By> messageMap = new HashMap<String, By>();
         messageMap.put("errorNameObjectInput", By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Название')]]//div/p[@class='error']"));
         messageMap.put("errorAddressObjectInput", By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Адрес')]]//div/p[@class='error']"));
-        messageMap.put("errorLoginInput", By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Логин')]]//div/p[@class='error']"));
-        messageMap.put("errorPasswordInput", By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Пароль')]]//div/input"));
+        messageMap.put("errorLoginInput", By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Логин')]]/following-sibling::*"));
+        messageMap.put("errorPasswordInput", By.xpath("//div[div[@class='input-title']/h2[contains(text(),'Пароль')]]/following-sibling::*"));
         messageMap.put("successSaveOwnerBlockMessage", By.xpath("//div[@class='objects new-object']//p[@class='submit-form-info']"));
         return messageMap.get(nameMessage);
     }

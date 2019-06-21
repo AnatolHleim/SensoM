@@ -14,32 +14,31 @@ import java.util.Map;
 
 class BrowserDriverFactory {
 
-	private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 	private String browser;
 	private Logger log;
 
 	BrowserDriverFactory(String browser, Logger log) {
 		this.browser = browser.toLowerCase();
 		this.log = log;
+
 	}
 
 	WebDriver createDriver() {
 		// Create driver
 		log.info("Create driver: " + browser);
+		String pathChrome = "src/main/resources/chromedriver.exe";
+		String nameChrome = "webdriver.chrome.driver";
 
 		switch (browser) {
-		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-			driver.set(new ChromeDriver());
-			break;
 
-		case "firefox":
+			case "firefox":
 			System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
 			driver.set(new FirefoxDriver());
 			break;
 			
 		case "chromeheadless":
-			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+			System.setProperty(nameChrome, pathChrome);
 			ChromeOptions chromeOptions = new ChromeOptions();
 			chromeOptions.addArguments("--headless");
 			driver.set(new ChromeDriver(chromeOptions));
@@ -57,10 +56,10 @@ class BrowserDriverFactory {
 		case "htmlunit":
 			driver.set(new HtmlUnitDriver());
 			break;
+			case "chrome":
 
-		default:
-			System.out.println("Do not know how to start: " + browser + ", starting chrome.");
-			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+			default:
+			System.setProperty(nameChrome, pathChrome);
 			driver.set(new ChromeDriver());
 			break;
 		}

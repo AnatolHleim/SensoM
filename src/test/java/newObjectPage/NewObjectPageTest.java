@@ -5,11 +5,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.HeaderModule;
 import pages.NewObjectPage;
 
 import java.io.FileNotFoundException;
@@ -18,11 +17,13 @@ import java.util.List;
 
 public class NewObjectPageTest extends TestData {
     @Test
-    public void verifyTitleNewObjectPage(){
+    public void verifyTitleNewObjectPageAndHeaderVisible(){
         NewObjectPage newObjectPage = new NewObjectPage(driver,log).openPage();
+        HeaderModule headerModule = new  HeaderModule(driver,log);
+        headerModule.find(headerModule.getActivePageName("profilePage"));
         Assert.assertEquals(newObjectPage.getCurrentPageTitle(),"Client");
+        Assert.assertTrue(headerModule.elementHasAttribute("profilePage"));
     }
-
     @Test(dataProvider = "getDataNewObject" )
     public void inputDataFirstBlock(TestData data){
         NewObjectPage newObjectPage = new NewObjectPage(driver,log).openPage();
