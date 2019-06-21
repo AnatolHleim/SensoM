@@ -5,12 +5,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-
 import java.lang.reflect.Method;
 
 @Listeners({ base.TestListener.class })
 public class BaseTest {
-
 	protected WebDriver driver;
 	protected Logger log;
 
@@ -33,17 +31,7 @@ public class BaseTest {
 		} else {
 			driver = factory.createDriver();
 		}
-
-		// This sleep here is for instructor only. Students don't need this here
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			log.info(e);
-			Thread.currentThread().interrupt();
-		}
-
 		driver.manage().window().maximize();
-
 		this.testSuiteName = ctx.getSuite().getName();
 		this.testMethodName = method.getName();
 	}

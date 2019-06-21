@@ -12,12 +12,12 @@ public class ResetPasswordPage extends BasePageObject {
     ResetPasswordPage(WebDriver driver, Logger log) {
         super(driver, log);
     }
-    private static final String URL_AUTH = BasePageObject.BASE_URL+"auth/password-reset";
+    static final String URL_FORGOT_PASSWORD = BasePageObject.BASE_URL+"auth/password-reset";
 
     private By inputUserEmail= By.id("email");
     private By buttonSubmit = By.xpath("//button[@type='submit']");
     public boolean selectMessage(String nameMessage,String condition,@Optional String attribute,@Optional String active ) {
-        Map<String, By> messageMap = new HashMap<String, By>();
+        Map<String, By> messageMap = new HashMap<>();
         messageMap.put("errorNotAvailableEmail", By.xpath("//p[@class='p error']"));
         messageMap.put("disableButton", By.xpath("//button[@ng-reflect-klass='button']"));
         messageMap.put("successSendMessage", By.xpath("//div[@class='reset__submit-msg']"));

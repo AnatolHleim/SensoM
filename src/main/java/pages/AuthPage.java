@@ -26,15 +26,17 @@ public class AuthPage extends BasePageObject {
     }
 
     public ResetPasswordPage goToResetPasswordPage() {
+        log.info("Opening page: " + ResetPasswordPage.URL_FORGOT_PASSWORD);
         click(linkForgotPassword);
+        log.info("Page opened!");
         return new ResetPasswordPage(driver, log);
     }
 
-    public By inputUserEmail = By.id("email");
+    private By inputUserEmail = By.id("email");
     public By inputPassword = By.id("password");
     public By buttonSubmit = By.xpath("//button[@ng-reflect-klass='button']");
     public By messageAboutIncorrectData = By.xpath("//div[@class='auth__error']");
-    public By linkForgotPassword = By.cssSelector("div.auth__forgot-password > a");
+    private By linkForgotPassword = By.cssSelector("div.auth__forgot-password > a");
     public By buttonShowPassword = By.xpath("//div[@class='auth__password-eye']");
     public By modalWindowRequisites = By.xpath("//div[@ng-reflect-klass='requisites']");
     public By linkFooterRequisites = By.xpath("//span[@class='link footer__left-item p1']");

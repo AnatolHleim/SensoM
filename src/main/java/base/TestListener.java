@@ -8,9 +8,9 @@ import org.testng.ITestResult;
 
 public class TestListener implements ITestListener {
 
-	Logger log;
-	String testName;
-	String testMethodName;
+	private Logger log;
+	private String testName;
+	private String testMethodName;
 
 	@Override
 	public void onTestStart(ITestResult result) {

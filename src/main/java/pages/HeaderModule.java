@@ -14,7 +14,7 @@ public class HeaderModule extends BasePageObject {
     public HeaderModule(WebDriver driver, Logger log) {
         super(driver, log);
     }
-    public By getActivePageName(String namePage) {
+    private By getActivePageName(String namePage) {
         Map<String, By> messageMap = new HashMap<>();
         messageMap.put("profilePage", By.xpath(".//a[text()='Профиль']/parent::li"));
         messageMap.put("messagePage", By.xpath(".//a[text()='Оповещения']/parent::li"));

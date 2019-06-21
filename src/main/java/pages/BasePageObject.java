@@ -6,23 +6,21 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 public class BasePageObject {
-	public static final String BASE_URL = "http://localhost:4200/";
+	static final String BASE_URL = "http://localhost:4200/";
 	protected WebDriver driver;
 	protected Logger log;
 
-	public BasePageObject(WebDriver driver, Logger log) {
+	BasePageObject(WebDriver driver, Logger log) {
 		this.driver = driver;
 		this.log = log;
 	}
 
 	/** Open page with given URL */
-	protected void openUrl(String url) {
+	void openUrl(String url) {
 		driver.get(url);
 	}
 
@@ -81,14 +79,14 @@ public class BasePageObject {
 	 * Wait for given number of seconds for element with given locator to be visible
 	 * on the page
 	 */
-	protected void waitForVisibilityOf(By locator, Integer... timeOutInSeconds) {
+	private void waitForVisibilityOf(By locator, Integer... timeOutInSeconds) {
 		int attempts = 0;
 		while (attempts < 2) {
 			try {
 				waitFor(ExpectedConditions.visibilityOfElementLocated(locator),
 						(timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null));
 				break;
-			} catch (StaleElementReferenceException e) {
+			} catch (StaleElementReferenceException ignored) {
 			}
 			attempts++;
 		}
@@ -106,12 +104,10 @@ public class BasePageObject {
 		String firstWindow = driver.getWindowHandle();
 
 		Set<String> allWindows = driver.getWindowHandles();
-		Iterator<String> windowsIterator = allWindows.iterator();
 
-		while (windowsIterator.hasNext()) {
-			String windowHandle = windowsIterator.next().toString();
-			if (!windowHandle.equals(firstWindow)) {
-				driver.switchTo().window(windowHandle);
+		for (String allWindow : allWindows) {
+			if (!firstWindow.equals(allWindow)) {
+				driver.switchTo().window(allWindow);
 				if (getCurrentPageTitle().equals(expectedTitle)) {
 					break;
 				}
