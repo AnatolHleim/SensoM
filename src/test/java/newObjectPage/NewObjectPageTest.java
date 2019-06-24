@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,11 +24,9 @@ public class NewObjectPageTest extends TestData {
     }
 
     @Test(dataProvider = "files")
-    public void verifyLoadImageLogo(int no, String fileName) {
+    public void verifyLoadImageLogo(String fileName) {
         NewObjectPage newObjectPage = new NewObjectPage(driver, log).openPage();
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("document.querySelector('div.buttons > div:nth-child(1) > label > input[type=file]').style.display='flex'");
-        newObjectPage.selectFile(fileName);
+        newObjectPage.selectVariantAddLogo("load",fileName);
         Assert.assertEquals(newObjectPage.getUploadedFilesNames(), fileName);
 
     }
@@ -37,6 +34,7 @@ public class NewObjectPageTest extends TestData {
     @Test(dataProvider = "getDataNewObject")
     public void inputDataFirstBlock(TestData data) {
         NewObjectPage newObjectPage = new NewObjectPage(driver, log).openPage();
+
         newObjectPage.type(data.getOwnerName(), newObjectPage.ownerField);
         newObjectPage.type(data.getEngineerName(), newObjectPage.firstEngineerField);
         newObjectPage.type(data.getManagerName(), newObjectPage.managerField);
@@ -46,8 +44,7 @@ public class NewObjectPageTest extends TestData {
         newObjectPage.type(data.getUsername(), newObjectPage.loginInput);
         newObjectPage.type(data.getPassword(), newObjectPage.passwordInput);
         newObjectPage.click(newObjectPage.checkBoxAuth);
-        newObjectPage.click(newObjectPage.buttonLoadDefaultLogo);
-        newObjectPage.click(newObjectPage.svgLogoList);
+        newObjectPage.selectVariantAddLogo(data.getLogoVariant(),data.getPathToFile());
         newObjectPage.type(data.getSnowCover(), newObjectPage.snowCoverInput);
         newObjectPage.click(newObjectPage.buttonSaveOwnerBlock);
         Assert.assertEquals(newObjectPage.find(newObjectPage.selectMessage(data.getLocator())).getText(), data.getMessageText());
@@ -71,9 +68,9 @@ public class NewObjectPageTest extends TestData {
     @DataProvider(name = "files")
     protected static Object[][] files() {
         return new Object[][]{
-                {1, "oneMore.jpg"},
-                {2, "twoMore.jpg"},
-                {3, "threeMore.png"}
+                {"oneMore.jpg"},
+                {"twoMore.jpg"},
+                {"threeMore.png"}
         };
     }
 }

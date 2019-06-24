@@ -13,6 +13,17 @@ public class TestData extends BaseTest {
     private String snowCover;
     private String attribute;
 
+    public String getLogoVariant() {
+        return logoVariant;
+    }
+
+    private String logoVariant;
+    private String pathToFile;
+
+    public String getPathToFile() {
+        return pathToFile;
+    }
+
     public String getAttribute() {
         return attribute;
     }

@@ -1,12 +1,15 @@
 package pages;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.util.HashMap;
 
+import java.util.List;
 import java.util.Map;
 
 public class NewObjectPage extends BasePageObject {
@@ -41,6 +44,18 @@ public class NewObjectPage extends BasePageObject {
         log.info("Uploaded files: " + names);
         return names;
     }
+    public void selectVariantAddLogo(String nameMessage, String path) {
+        if (nameMessage.equals("load")){
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("document.querySelector('div.buttons > div:nth-child(1) > label > input[type=file]').style.display='flex'");
+            selectFile(path);
+        }
+       else if(nameMessage.equals("selectDefault")){
+           click(buttonLoadDefaultLogo);
+            List<WebElement> logoList =findAll(svgLogoList);
+            logoList.get(Integer.parseInt(path)).click();
+        }
+    }
     public By ownerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Владелец процесса']]/input");
     public By firstEngineerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Инженер 1']]/input");
     public By managerField = By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Менеджер 1']]/input");
@@ -56,7 +71,7 @@ public class NewObjectPage extends BasePageObject {
     public By errorForLogoLoad = By.xpath("//p[contains(text(),'Файл должен быть в формате JPG')]");
     public By snowCoverInput = By.xpath("//div[@class='label snowCover']/input");
     public By buttonSaveOwnerBlock = By.xpath("//div[@class='objects new-object']//button[text()='Сохранить']");
-    public By svgLogoList = By.xpath("//div[@class='chooseFromList-wrap']");
+    public By svgLogoList = By.xpath("//div[@class='chooseFromList-wrap']/div");
 
 
 }
